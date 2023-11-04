@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    color: white;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: #376681;
+    width: 60px;
+    padding: 8px;
+    flex-shrink: 0;
+    transition: .5s;
+}
+
+#sidebar .logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 12px;
+    margin-bottom: 40px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #afafaf;
+}
+
+#sidebar .logo h1 {
+    color: #4989AD;
+    opacity: 0;
+    transition: .3s;
+}
+
+#sidebar .links {
+    border-bottom: 1px solid #ccc;
+}
+
+#sidebar .links .link {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 16px 0;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: .5s;
+}
+
+#sidebar .links .link:hover {
+    background: rgba(0,0,0,0.2);
+}
+
+#sidebar .links .link i {
+    font-size: 20px;
+    color: #ccc;
+}
+
+#sidebar .links .link p {
+    font-size: 16px;
+    opacity: 0;
+    transition: .3s;
+}
+
+#sidebar:hover {
+    width: 150px;
+}
+
+#sidebar:hover .logo h1,
+#sidebar:hover .links .link p{
+    transition-delay: .3s;
+    opacity: 1;
+}
