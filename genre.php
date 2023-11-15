@@ -198,7 +198,7 @@
 
         <!-- 4. Artists -->
         <section class="artists">
-            <h1 class="title">popular artists <a href="w_artists.php" style="padding-left: 12px;"><i class="fa-solid fa-arrow-right"></i></a></h1>
+            <h1 class="title">popular artists <a href="artists.php" style="padding-left: 12px;"><i class="fa-solid fa-arrow-right"></i></a></h1>
 
             <!-- Swiper -->
             <div class="swiper mySwiper_1">

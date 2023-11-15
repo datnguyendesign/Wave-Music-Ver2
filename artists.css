@@ -207,7 +207,7 @@ main {
 }
 
 .songs .song-item li:nth-of-type(odd) {
-    color: #232323;
+    background: rgba(217, 217, 217, .1);
 }
 
 .songs .song-item li .song-info {
@@ -232,10 +232,6 @@ main {
     font-weight: 600;
     line-height: normal;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.25);
-}
-
-.songs .song-item li:nth-of-type(odd) .song-info p {
-    color: #232323;
 }
 
 .songs .song-item li h1 {
