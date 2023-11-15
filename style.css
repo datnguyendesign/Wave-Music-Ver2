@@ -361,6 +361,10 @@ main {
     
 }
 
+.explore {
+    padding-bottom: 10rem;
+}
+
 .explore .item {
     display: flex;
     justify-content: start;
@@ -419,6 +423,12 @@ main {
     border-radius: 15px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     opacity: 0.8;
+    transition: .3s;
+}
+
+.swiper-slide .item:hover img {
+    opacity: 1;
+    scale: 1.1;
 }
 
 .swiper-slide h1 {
@@ -436,6 +446,12 @@ main {
     margin-right: -50%;
     transform: translate(-50%, -50%);
     text-transform: uppercase;
+    transition: .5s ease-in;
+}
+
+.swiper-slide .item:hover h1 {
+    font-size: 26px;
+    text-shadow: 10px 10px 4px rgba(0, 0, 0, 0.5);
 }
 
 .swiper-button-next,

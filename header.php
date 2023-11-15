@@ -20,8 +20,8 @@
         <div class="col-6"></div>
 
         <div class="registration col-2">
-            <button type="button"><a href="login.php">Login</a></button>
-            <button type="button"><a href="signup.php">Sign up</a></button>
+            <button type="button"><a href="registration.php">Login</a></button>
+            <button type="button"><a href="registration.php">Sign up</a></button>
         </div>
     </header>
 

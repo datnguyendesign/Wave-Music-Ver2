@@ -26,7 +26,7 @@
         <!-- 2. Category -->
         <section class="category">
 
-            <div class="title">GENRE <a href="w_wave.php" style="padding-left: 12px;"><i class="fa-solid fa-arrow-right"></i></a></div>
+            <div class="title">Genre <a href="genre.php" style="padding-left: 12px;"><i class="fa-solid fa-arrow-right"></i></a></div>
 
             <!-- Swiper -->
             <div class="swiper mySwiper">
