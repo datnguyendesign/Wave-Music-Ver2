@@ -63,7 +63,7 @@
 
                 <form action="">
                     <div class="input-group">
-                        <input required="" type="email" name="Email" autocomplete="off" class="input">
+                        <input required="" type="text" name="Email" autocomplete="off" class="input">
                         <label class="email-label">Email</label>
                     </div>
                     <div class="input-group">
