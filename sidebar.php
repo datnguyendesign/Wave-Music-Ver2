@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="sidebar">
-        <a href="#" class="logo">
+        <a href="index.php" class="logo">
             <img src="images/logo.svg">
             <h1>WaveM</h1>
         </a>

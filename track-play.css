@@ -1,0 +1,315 @@
+#music-control {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    height: 92px;
+    width: 100%;
+    z-index: 10000;
+}
+
+#music-control .switcher,
+#music-control .swap-slider,
+#music-control .buttons {
+    display: none;
+}
+
+#music-control .part_1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+    padding: 4px 0 4px 20px;
+    border-left: 3px solid #fff;
+    margin-left: 10px;
+}
+
+#music-control .part_1 i {
+    font-size: 16px;
+    color: #4989AD;
+    padding-left: 30px;
+}
+
+#music-control .part_1 .info h1 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#music-control .part_1 .info p {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+#music-control .part_2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#music-control .part_2 .controller {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    margin-bottom: 10px;
+}
+
+#music-control .part_2 .controller .playpause-track {
+    position: relative;
+}
+
+#music-control .part_2 .controller .playpause-track:hover img {
+    display: none;
+}
+
+#music-control .part_2 .controller .playpause-track img {
+    position: absolute;
+    border-radius: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#music-control .part_2 .duration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.seek_slider,
+.volume_slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 4px;
+    background: rgba(217, 217, 217, 0.10);
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.seek_slider::-webkit-slider-thumb,
+.volume_slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border: 3px solid #234085;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.seek_slider:hover,
+.volume_slider:hover {
+    opacity: 1;
+}
+
+.seek_slider {
+    width: 50rem;
+}
+
+.volume_slider {
+    width: 80px;
+}
+
+#music-control .part_3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    margin-right: 25px;
+}
+
+#music-control .part_3 span {
+    width: 2px;
+    height: 50px;
+    border-radius: 30px;
+    background: #646262;
+}
+
+#music-control.active {
+    height: 100vh;
+    width: 100%;
+    background: #F7F8F8;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ACBB78, #0c1111);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ACBB78, #1f2c2c);
+    flex-direction: column;
+    justify-content: space-around;
+    overflow: hidden;
+    z-index: 10000;
+}
+
+#music-control.active .part_3 {
+    display: none;
+}
+
+#music-control.active .part_2 {
+    flex-direction: column-reverse;
+    row-gap: 2rem;
+}
+
+#music-control.active .part_1 {
+    border: none;
+}
+
+#music-control.active .part_1 .info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#music-control.active .part_1 .info span {
+    display: inline;
+    color: rgba(255, 255, 255, 0.50);
+}
+
+#music-control.active .part_1 .info p {
+    padding: 0;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.50);
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#music-control.active .part_1 .info h1 {
+    padding: 0;
+    margin: 0;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#music-control.active .part_1 i {
+    display: none;
+}
+
+#music-control.active .switcher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    padding: 0.41rem;
+    font-weight: 600;
+    background: rgba(217, 217, 217, 0.20);
+    border-radius: 30px;
+    margin-top: 30px;
+}
+
+#music-control.active .switcher p {
+    margin: 0;
+    padding: 0.4rem 8rem;
+    cursor: pointer;
+}
+
+#music-control.active .switcher p.active {
+    background: rgba(217, 217, 217, 0.50);
+    border-radius: 30px;
+}
+
+#music-control.active .swap-slider {
+    display: flex;
+    width: 100vw;
+    position: relative;
+    overflow: visible;
+}
+
+#music-control.active .lyrics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 4rem;
+    width: 100vw;
+    position: relative;
+}
+
+#music-control.active .lyrics ~ .playlist {
+    display: flex;
+}
+
+#music-control.active .lyrics {
+    display: none;
+}
+
+#music-control.active .lyrics.active {
+    display: flex;
+}
+
+#music-control.active .lyrics.active ~ .playlist {
+    display: none;
+}
+
+#music-control.active .lyrics img {
+    width: 400px;
+    height: 450px;
+}
+
+#music-control.active .lyrics .lyric-area {
+    width: 60rem;
+    height: 50rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+
+}
+
+#music-control.active .lyrics .lyric-area::-webkit-scrollbar {
+    display: none;
+}
+
+#music-control.active .lyrics .lyric-area pre {
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5;
+    text-wrap: wrap;
+    width: 100%;
+    height: 95%;
+}
+
+#music-control.active .lyrics .lyric-area pre::-webkit-scrollbar {
+    display: none;
+}
+
+#music-control.active .playlist {
+    width: 100vw;
+    position: relative;
+}
+
+#music-control.active .playlist .swiper-slide {
+    width: 350px;
+    height: 400px;
+}
+
+#music-control.active .playlist .swiper-slide img {
+    width: 100%;
+    height: 100%;
+}
+
+#music-control.active .buttons {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: 20px;
+    right: 20px;
+}
+
+#music-control.active .buttons .box {
+    padding: 8px;
+    background: rgba(217, 217, 217, .6);
+    border-radius: 50%;
+    margin: 12px;
+}
