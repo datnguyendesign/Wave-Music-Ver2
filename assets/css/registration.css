@@ -168,6 +168,12 @@ body {
     position: relative;
 }
 
+.login-form form .input-group span {
+    padding: 0 8px;
+    color: rgb(189, 47, 47);
+    font-size: 1.4rem;
+}
+
 .input {
     width: 100%;
     border-radius: 1rem;

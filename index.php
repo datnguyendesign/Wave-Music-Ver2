@@ -8,8 +8,8 @@
 
     <script src="https://kit.fontawesome.com/4f40e8708a.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="track-play.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/track-play.css">
 
     <!-- Link swiper.js -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
@@ -491,30 +491,30 @@ Rằng người ơi, tôi đang nhớ anh</pre>
 
             <div class="playlist">
                 <!-- Swiper -->
-            <div class="swiper mySwiper_2">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="images/image-2.png" alt="">
+                <div class="swiper mySwiper_2">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="images/image-2.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/daunhatlalangim.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/dubaothoitiethomnaymua.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/image-2.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/daunhatlalangim.png" alt="">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/dubaothoitiethomnaymua.png" alt="">
+                        </div>
                     </div>
-                    <div class="swiper-slide">
-                        <img src="images/daunhatlalangim.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/dubaothoitiethomnaymua.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/image-2.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/daunhatlalangim.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/dubaothoitiethomnaymua.png" alt="">
-                    </div>
+                    <div class="swiper-button-next" style="--swiper-navigation-top-offset: 40%;"></div>
+                    <div class="swiper-button-prev" style="--swiper-navigation-top-offset: 40%;"></div>
                 </div>
-                <div class="swiper-button-next" style="--swiper-navigation-top-offset: 40%;"></div>
-                <div class="swiper-button-prev" style="--swiper-navigation-top-offset: 40%;"></div>
-            </div>
             </div>
         </div>
 
@@ -585,7 +585,7 @@ Rằng người ơi, tôi đang nhớ anh</pre>
     <!-- Link swiper.js -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
-    <script src="main.js"></script>
+    <script src="assets/js/main.js"></script>
 
     <!-- Initialize Swiper -->
     <script>
@@ -618,12 +618,23 @@ Rằng người ơi, tôi đang nhớ anh</pre>
         const sliderEl = document.querySelector("#range")
 
         function progressScript() {
-        const sliderValue = sliderEl.value;
-        sliderEl.style.background = `linear-gradient(to right, #fff ${sliderValue}%, rgba(217, 217, 217, 0.30) ${sliderValue}%)`;
+            const sliderValue = sliderEl.value;
+            sliderEl.style.background = `linear-gradient(to right, #fff ${sliderValue}%, rgba(217, 217, 217, 0.30) ${sliderValue}%)`;
         }
 
         progressScript();
-        
+    </script>
+
+    <script>
+        let dropdown1 = document.getElementById('dropdown-1');
+        dropdown1.onclick = function() {
+            dropdown1.classList.toggle('active');
+        }
+
+        let dropdown2 = document.getElementById('dropdown-2');
+        dropdown2.onclick = function() {
+            dropdown2.classList.toggle('active');
+        }
     </script>
 </body>
 

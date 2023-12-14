@@ -51,6 +51,11 @@ html {
 }
 
 #sidebar .links .link {
+    width: 100%;
+}
+
+#sidebar .links .link a {
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -62,7 +67,7 @@ html {
     transition: .5s;
 }
 
-#sidebar .links .link:hover {
+#sidebar .links .link:hover a {
     background: rgba(0,0,0,0.2);
 }
 
