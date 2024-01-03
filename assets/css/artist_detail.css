@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    color: white;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+body {
+    background: #F7F8F8;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4C8DB2, #0c1111);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4C8DB2, #1f2c2c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 100vw;
+    height: 100%;
+}
+
+.row {
+    --bs-gutter-x: 0;
+}
+
+main {
+    margin-left: 100px;
+    margin-right: 20px;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.48);
+    width: 100%;
+    height: 19rem;
+    padding-left: 120px;
+    padding-top: 50px;
+}
+
+header h2 {
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-left: 1rem;
+}
+
+header h1 {
+    font-size: 52px;
+    text-transform: capitalize;
+    font-weight: 600;
+    background: #000000;
+    background: linear-gradient(to top right, #979191 0%, #fff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 4px 0;
+}
+
+header p {
+    font-size: 18px;
+
+}
+
+main {
+    display: flex;
+    margin-bottom: 10rem;
+}
+
+.artist {
+    padding: 2rem;
+    flex: 2;
+}
+
+.artist .action {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 2rem;
+    
+}
+
+.action a {
+    font-size: 30px;
+    transition: .2s;
+}
+
+.action a:first-child {
+    font-size: 50px;
+}
+
+.action a:first-child i {
+    color: rgb(65, 176, 213);
+}
+
+.action a:hover {
+    scale: 1.1;
+}
+
+.action .follow {
+    background: transparent;
+    border: 2px solid rgb(10, 17, 80);
+    outline: none;
+    padding: 4px 18px;
+    font-size: 18px;
+    border-radius: 20px;
+    margin: 0 1rem;
+    transition: .2s;
+}
+
+.action .follow:hover {
+    letter-spacing: 1px;
+    border: 2px solid rgb(255, 255, 255);
+}
+
+.songs {
+    margin-top: 4rem;
+    background-color: rgba(18, 18, 18, 0.5);
+    padding: 1rem;
+    border-radius: 10px;
+    padding-bottom: 5rem;
+}   
+
+.songs .title {
+    color: #FFF;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-bottom: 2rem;
+}
+
+.song-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 50px;
+}
+
+.song-header a {
+    font-size: 16px;
+    color: #d7d4d4;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.song-header a:hover {
+    text-decoration: underline;
+}
+
+.songs .song-item .tb .song-info {
+    padding-left: 12px;
+    text-transform: uppercase;
+}
+
+.songs .song-item .tb .song-info p:first-child {
+    padding-right: 8px;
+}
+
+.songs .song-item .tb h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.songs .song-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 0;
+}
+
+.songs .song-item li {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.25);
+    cursor: pointer;
+}
+
+.songs .song-item .i:hover {
+    background: rgba(204, 204, 204, .3);
+}
+
+.songs .song-item li .song-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 3rem;
+}
+
+.songs .song-item li .song-info img {
+    width: 60px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    object-fit: cover;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    margin-left: 12px;
+}
+
+.songs .song-item li .song-info p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.25);
+}
+
+.songs .song-item li h1 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #ccc;
+}
+
+.songs .song-item li i {
+    font-size: 18px;
+    color: lightpink;
+    padding-right: 3rem;
+    cursor: pointer;
+}
+
+.about {
+    flex: 1;
+    margin-top: 13rem;
+    background-color: rgba(18, 18, 18, 0.5);
+    padding: 2rem;
+    border-radius: 10px;
+    height: fit-content;
+}
+
+.about .title {
+    font-size: 3.2rem;
+    padding: 1rem;
+    font-weight: 700;
+}
+
+.about img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.about .about-content {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.about-content .description {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.name h1 {
+    font-size: 32px;
+    padding-bottom: 1rem;
+}
+
+.debut-year h1,
+.country h1 {
+    font-size: 20px;
+    font-weight: 400;
+}

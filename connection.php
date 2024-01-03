@@ -1,10 +1,10 @@
 <?php
 
     $serverName = "localhost";
-    $username = "";
+    $username = "root";
     $pw = "";
     $dbName = "wave_music";
 
-    $conn = new mysqli($serverName, $username, $pw, $dbName, 3307);
+    $conn = new mysqli($serverName, $username, $pw, $dbName);
 
 ?>

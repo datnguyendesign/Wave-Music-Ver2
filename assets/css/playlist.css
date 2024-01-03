@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    color: white;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+body {
+    background: #F7F8F8;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4C8DB2, #0c1111);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4C8DB2, #1f2c2c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 100vw;
+    height: 100%;
+}
+
+.row {
+    --bs-gutter-x: 0;
+}
+
+main {
+    margin-left: 100px;
+    margin-right: 20px;
+    margin-bottom: 10rem;
+}
+
+#playlist .title {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+#playlist .title h1 {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+#playlist .title p {
+    text-align: center;
+    font-size: 18px;
+    color: #CCC;
+    letter-spacing: 4px;
+}
+
+.playlist-track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 5rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+    row-gap: 4rem;
+}

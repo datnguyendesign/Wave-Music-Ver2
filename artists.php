@@ -1,5 +1,13 @@
+<?php
+require_once "connection.php";
+
+$sql = "SELECT * FROM songs LIMIT 6";
+$result_songs = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +21,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
 </head>
+
 <body>
-    
+
     <?php include_once 'sidebar.php' ?>
 
     <main id="main-content">
@@ -48,7 +57,7 @@
             <h1 class="title">discography</h1>
 
             <!-- Swiper -->
-            <div class="swiper mySwiper">
+            <div class="swiper mySwiper_artist">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="images/fine-line-1.png">
@@ -130,188 +139,41 @@
         <section class="songs">
             <h1 class="title">Songs</h1>
             <ul class="song-item">
-                <li class="row">
+                <li class="row tb">
                     <div class="song-info col-3">
-                        <img src="images/The Weeknd - Dawn FM.jpg">
-                        <p>Out of Time</p>
+                        <p>Image</p>
+                        <p>Song Name</p>
                     </div>
-                    <h1 class="artist col-3">The Weeknd</h1>
-                    <h1 class="description col-3">Dawn FM</h1>
-                    <h1 class="duration col-2">3:20</h1>
-                    <i class="fa-solid fa-heart col-1"></i>
+                    <h1 class="artist col-3">Artist</h1>
+                    <h1 class="description col-3">...</h1>
+                    <h1 class="duration col-2">Duration</h1>
+                    <i class="fa-solid fa-heart col-1" style="visibility: hidden;"></i>
                 </li>
-                <li class="row">
-                    <div class="song-info col-3">
-                        <img src="images/Charli.jpg">
-                        <p>White Mercerdes</p>
-                    </div>
-                    <h1 class="artist col-3">Charli XCX</h1>
-                    <h1 class="description col-3">Charli</h1>
-                    <h1 class="duration col-2">3:20</h1>
-                    <i class="fa-regular fa-heart col-1"></i>
-                </li>
-                <li class="row">
-                    <div class="song-info col-3">
-                        <img src="images/The Weeknd - After Hours (2 LP) (Explicit) - Vinyl.jpg">
-                        <p>Blinding Lights</p>
-                    </div>
-                    <h1 class="artist col-3">The Weeknd</h1>
-                    <h1 class="description col-3">After Hours</h1>
-                    <h1 class="duration col-2">3:20</h1>
-                    <i class="fa-regular fa-heart col-1"></i>
-                </li>
-                <li class="row">
-                    <div class="song-info col-3">
-                        <img src="images/Yerin Baek tellusaboutyourself.jpg">
-                        <p>Love Game</p>
-                    </div>
-                    <h1 class="artist col-3">Yerin Baek</h1>
-                    <h1 class="description col-3">tellusaboutyourself</h1>
-                    <h1 class="duration col-2">3:20</h1>
-                    <i class="fa-regular fa-heart col-1"></i>
-                </li>
-                <li class="row">
-                    <div class="song-info col-3">
-                        <img src="images/The Midnight - Endless Summer (2016).jpg">
-                        <p>Sunset</p>
-                    </div>
-                    <h1 class="artist col-3">The Midnight</h1>
-                    <h1 class="description col-3">Endless Summer</h1>
-                    <h1 class="duration col-2">3:20</h1>
-                    <i class="fa-regular fa-heart col-1"></i>
-                </li>
-                <li class="row">
-                    <div class="song-info col-3">
-                        <img src="images/41fWJOWxdCL._UXNaN_FMjpg_QL85_.jpg">
-                        <p>lovely.</p>
-                    </div>
-                    <h1 class="artist col-3">Gregory Dillon</h1>
-                    <h1 class="description col-3">lovely.</h1>
-                    <h1 class="duration col-2">3:20</h1>
-                    <i class="fa-regular fa-heart col-1"></i>
-                </li>
+                <?php while ($row = mysqli_fetch_assoc($result_songs)) { ?>
+                    <li class="row i songs" data-id="<?php echo $row["songID"]; ?>" onclick="playMe()">
+                        <div class="song-info col-3">
+                            <img src="<?php echo $row["songImage"]; ?>">
+                            <p><?php echo $row["songName"]; ?></p>
+                        </div>
+                        <?php
+                        $artistID = $row["artistID"];
+                        $sql_artist = "SELECT * FROM artists WHERE artistID = $artistID";
+                        $result_artist = $conn->query($sql_artist);
+                        $row_artist = $result_artist->fetch_assoc();
+                        ?>
+                        <h1 class="artist col-3"><?php echo $row_artist["artistName"]; ?></h1>
+                        <h1 class="description col-3">Dawn FM</h1>
+                        <h1 class="duration col-2">3:20</h1>
+                        <i class="fa-solid fa-heart col-1"></i>
+                    </li>
+                <?php } ?>
             </ul>
         </section>
 
+        <?php require_once "footer.php"; ?>
     </main>
 
-    <section id="music-control">
-
-        <div class="switcher">
-            <p class="p active" id="lyrics" onclick="click_switcher_lyrics()">Lyrics</p>
-            <p class="p" id="playlist" onclick="click_switcher_playlist()">Playlist</p>
-        </div>
-
-        <div class="swap-slider">
-            <div class="lyrics active">
-                <img src="images/image-2.png" alt="">
-                <div class="lyric-area">
-                    <pre>Anh và tôi thật ra gặp nhau và quen nhau cũng đã được mấy năm
-Mà chẳng có chi hơn lời hỏi thăm
-Rằng giờ này đã ăn sáng chưa?
-Ở bên đấy nắng hay mưa?
-Anh và tôi thật ra, uhm-hm, mải mê nhìn lén nhau
-Và không một ai nói nên câu, uhm-mm
-Rằng người ơi, tôi đang nhớ anh
-Và anh có nhớ tôi không?
-Mà chẳng có chi hơn lời hỏi thăm
-Rằng giờ này đã ăn sáng chưa?
-Ở bên đấy nắng hay mưa?
-Anh và tôi thật ra, uhm-hm, mải mê nhìn lén nhau
-Và không một ai nói nên câu, uhm-mm
-Rằng người ơi, tôi đang nhớ anh</pre>
-                </div>
-            </div>
-
-            <div class="playlist">
-                <!-- Swiper -->
-            <div class="swiper mySwiper_2">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="images/image-2.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/daunhatlalangim.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/dubaothoitiethomnaymua.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/image-2.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/daunhatlalangim.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/dubaothoitiethomnaymua.png" alt="">
-                    </div>
-                </div>
-                <div class="swiper-button-next" style="--swiper-navigation-top-offset: 40%;"></div>
-                <div class="swiper-button-prev" style="--swiper-navigation-top-offset: 40%;"></div>
-            </div>
-            </div>
-        </div>
-
-        <div class="buttons">
-            <div class="box">
-                <img src="images/full-screen.svg" alt="">
-            </div>
-            <div class="box">
-                <img src="images/setting.svg" alt="">
-            </div>
-            <div class="box">
-                <img src="images/profile.svg" alt="">
-            </div>
-            <div class="box exit-btn" onclick="exit();">
-                <img src="images/x.svg" alt="">
-            </div>
-        </div>
-
-        <div class="part_1">
-            <div class="info">
-                <h1>Anh nhà ở đâu thế</h1>
-                <p>&nbsp;<span>- </span>Amee</p>
-            </div>
-            <i class="fa-solid fa-heart"></i>
-        </div>
-
-        <div class="part_2">
-            <div class="controller">
-                <div class="random-track">
-                    <img src="images/shuffle.svg" title="random">
-                </div>
-                <div class="prev-track">
-                    <img src="images/skip-prev.svg">
-                </div>
-                <div class="playpause-track">
-                    <img src="images/amee-dreamee-dia-cd_0cc3ba2c39ba4c1d9b5804d30a8b7e1d_master.webp" style="width:50px;">
-                    <i class="fa fa-play-circle fa-5x"></i>
-                </div>
-                <div class="next-track">
-                    <img src="images/skip-next.svg" alt="">
-                </div>
-                <div class="repeat-track">
-                    <img src="images/repeat.svg" title="repeat">
-                </div>
-            </div>
-            <div class="duration">
-                <div class="current-time">00:00</div>
-                <input type="range" min="1" max="100" value="0" class="seek_slider" id="range" oninput="progressScript()">
-                <div class="total-duration">00:00</div>
-            </div>
-        </div>
-
-        <div class="part_3">
-            <img src="images/microphone.png" alt="" onclick="open_control();">
-            <img src="images/icon-frame.svg" alt="" onclick="open_control();">
-            <div class="volume">
-                <img src="images/solid-media-volume-up.svg" alt="">
-                <input type="range" min="1" max="100" value="99" class="volume_slider" id="range" oninput="progressScript()">
-            </div>
-            <span></span>
-            <img src="images/menu.svg" alt="" class="menu" onclick="test();">
-        </div>
-    </section>
+    <?php require_once "play_track.php"; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
@@ -321,7 +183,7 @@ Rằng người ơi, tôi đang nhớ anh</pre>
     <script src="assets/js/main.js"></script>
 
     <script>
-        var swiper = new Swiper(".mySwiper", {
+        var swiper = new Swiper(".mySwiper_artist", {
             slidesPerView: 4,
             spaceBetween: 50,
             navigation: {
@@ -329,7 +191,7 @@ Rằng người ơi, tôi đang nhớ anh</pre>
                 prevEl: ".swiper-button-prev",
             },
         });
-        
+
         var swiper = new Swiper(".mySwiper_2", {
             slidesPerView: 3,
             spaceBetween: 50,
@@ -340,4 +202,5 @@ Rằng người ơi, tôi đang nhớ anh</pre>
         });
     </script>
 </body>
+
 </html>

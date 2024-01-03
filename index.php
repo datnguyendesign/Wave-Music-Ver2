@@ -1,3 +1,16 @@
+<?php
+require_once "connection.php";
+
+$sql_genre = "SELECT * FROM genres";
+$data = $conn->query($sql_genre);
+
+$sql_artist = "SELECT * FROM artists";
+$data_artist = $conn->query($sql_artist);
+
+$sql_songs = "SELECT * FROM songs LIMIT 9";
+$data_song = $conn->query($sql_songs);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,54 +45,14 @@
             <!-- Swiper -->
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/I Can_t Go, by All The Damn Vampires, Sunglasses Kid, Mint Simon.jpg">
-                            <h1>synth-pop</h1>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/Bob Willoughby - Audrey Hepburn, on Telephone, Paramount Studios - B_W Estate Print.jpg">
-                            <h1>jazz</h1>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/The Weeknd - After Hours (2 LP) (Explicit) - Vinyl.jpg">
-                            <h1>r&b</h1>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/country  - playlist by avaskye _ Spotify.jpg">
-                            <h1>country</h1>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/I Can_t Go, by All The Damn Vampires, Sunglasses Kid, Mint Simon.jpg">
-                            <h1>synth-pop</h1>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/Bob Willoughby - Audrey Hepburn, on Telephone, Paramount Studios - B_W Estate Print.jpg">
-                            <h1>jazz</h1>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/The Weeknd - After Hours (2 LP) (Explicit) - Vinyl.jpg">
-                            <h1>r&b</h1>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/country  - playlist by avaskye _ Spotify.jpg">
-                            <h1>country</h1>
-                        </a>
-                    </div>
+                    <?php while ($row = mysqli_fetch_assoc($data)) { ?>
+                        <div class="swiper-slide">
+                            <a href="genre_detail.php?genreID=<?php echo $row["genreID"]; ?>" class="item">
+                                <img src="<?php echo $row["genreImage"]; ?>">
+                                <h1><?php echo $row["genreName"]; ?></h1>
+                            </a>
+                        </div>
+                    <?php } ?>
                 </div>
                 <div class="circle">
                     <div class="swiper-button-next"></div>
@@ -231,54 +204,14 @@
             <!-- Swiper -->
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/tam3.jpg">
-                            <h2>Mỹ Tâm</h2>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/282562961_560018528829158_205099524906925756_n.jpg">
-                            <h2>Harry Style</h2>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/download (1).jpg">
-                            <h2>Chillies</h2>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/ab6761610000e5ebc9690bc711d04b3d4fd4b87c.jpg">
-                            <h2>BLACKPINK</h2>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/tam3.jpg">
-                            <h2>Mỹ Tâm</h2>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/282562961_560018528829158_205099524906925756_n.jpg">
-                            <h2>Harry Style</h2>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/download (1).jpg">
-                            <h2>Chillies</h2>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="item">
-                            <img src="images/ab6761610000e5ebc9690bc711d04b3d4fd4b87c.jpg">
-                            <h2>BLACKPINK</h2>
-                        </a>
-                    </div>
+                    <?php while ($row = mysqli_fetch_assoc($data_artist)) { ?>
+                        <div class="swiper-slide">
+                            <a href="artist_detail.php?artistID=<?php echo $row["artistID"]; ?>" class="item">
+                                <img src="<?php echo $row["artistImage"]; ?>">
+                                <h2><?php echo $row["artistName"]; ?></h2>
+                            </a>
+                        </div>
+                    <?php } ?>
                 </div>
                 <div class="swiper-button-next" style="--swiper-navigation-top-offset: 40%;"></div>
                 <div class="swiper-button-prev" style="--swiper-navigation-top-offset: 40%;"></div>
@@ -290,7 +223,7 @@
             <h1 class="title">playlist for you</h1>
 
             <!-- Swiper -->
-            <div class="swiper mySwiper">
+            <div class="swiper mySwiper_2">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <a href="#" class="item">
@@ -395,190 +328,26 @@
         <!-- 6. Explore -->
         <section class="explore row">
             <h1 class="title">Explore new song</h1>
-            <div class="item col-4">
-                <img src="images/ab67616d0000b273a1c37f3fd969287c03482c3b.jpg">
-                <div class="content">
-                    <h2>radio</h2>
-                    <p>Lana Del Rey</p>
+            <?php while ($row = mysqli_fetch_assoc($data_song)) { ?>
+                <div class="item col-4 songs" data-id="<?php echo $row["songID"]; ?>" onclick="playMe()">
+                    <img src="<?php echo $row["songImage"]; ?>">
+                    <div class="content">
+                        <h2><?php echo $row["songName"]; ?></h2>
+                        <?php $artistID = $row["artistID"];
+                        $sql_id = "SELECT * FROM artists WHERE artistID = $artistID";
+                        $result_id = $conn->query($sql_id);
+                        $row_id = mysqli_fetch_assoc($result_id);
+                        ?>
+                        <p><?php echo $row_id["artistName"]; ?></p>
+                    </div>
                 </div>
-            </div>
-            <div class="item col-4">
-                <img src="images/1581043806043.jpg">
-                <div class="content">
-                    <h2>có em bên đời bỗng vui</h2>
-                    <p>Chillies</p>
-                </div>
-            </div>
-            <div class="item col-4">
-                <img src="images/SZATout.webp">
-                <div class="content">
-                    <h2>snooze</h2>
-                    <p>Sza</p>
-                </div>
-            </div>
-            <div class="item col-4">
-                <img src="images/amee-dreamee-dia-cd_0cc3ba2c39ba4c1d9b5804d30a8b7e1d_master.webp">
-                <div class="content">
-                    <h2>anh nhà ở đâu thế</h2>
-                    <p>Amee</p>
-                </div>
-            </div>
-            <div class="item col-4">
-                <img src="images/1710868712-d2845e1d4c98a360d14c6f9afe0f64b6ebfca67725dfccef94d791b875ca1c6c-d.webp">
-                <div class="content">
-                    <h2>paint the town red</h2>
-                    <p>Doja Cat</p>
-                </div>
-            </div>
-            <div class="item col-4">
-                <img src="images/Harry-Styles-Harrys-House-900x600.jpeg">
-                <div class="content">
-                    <h2>late night talking</h2>
-                    <p>Harry Style</p>
-                </div>
-            </div>
-            <div class="item col-4">
-                <img src="images/Olivia Rodrigo sets title and release date for new album _Guts_.jpg">
-                <div class="content">
-                    <h2>vampire</h2>
-                    <p>Olivia Rodrigo</p>
-                </div>
-            </div>
-            <div class="item col-4">
-                <img src="images/1691740459994_640.jpg">
-                <div class="content">
-                    <h2>tình yêu có nghĩa là gì</h2>
-                    <p>Tlinh</p>
-                </div>
-            </div>
-            <div class="item col-4">
-                <img src="images/25.jpg">
-                <div class="content">
-                    <h2>when we were young</h2>
-                    <p>Adele</p>
-                </div>
-            </div>
+            <?php } ?>
         </section>
+
+        <?php require_once "footer.php"; ?>
     </main>
 
-    <section id="music-control">
-
-        <div class="switcher">
-            <p class="p active" id="lyrics" onclick="click_switcher_lyrics()">Lyrics</p>
-            <p class="p" id="playlist" onclick="click_switcher_playlist()">Playlist</p>
-        </div>
-
-        <div class="swap-slider">
-            <div class="lyrics active">
-                <img src="images/image-2.png" alt="">
-                <div class="lyric-area">
-                    <pre>Anh và tôi thật ra gặp nhau và quen nhau cũng đã được mấy năm
-Mà chẳng có chi hơn lời hỏi thăm
-Rằng giờ này đã ăn sáng chưa?
-Ở bên đấy nắng hay mưa?
-Anh và tôi thật ra, uhm-hm, mải mê nhìn lén nhau
-Và không một ai nói nên câu, uhm-mm
-Rằng người ơi, tôi đang nhớ anh
-Và anh có nhớ tôi không?
-Mà chẳng có chi hơn lời hỏi thăm
-Rằng giờ này đã ăn sáng chưa?
-Ở bên đấy nắng hay mưa?
-Anh và tôi thật ra, uhm-hm, mải mê nhìn lén nhau
-Và không một ai nói nên câu, uhm-mm
-Rằng người ơi, tôi đang nhớ anh</pre>
-                </div>
-            </div>
-
-            <div class="playlist">
-                <!-- Swiper -->
-                <div class="swiper mySwiper_2">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="images/image-2.png" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="images/daunhatlalangim.png" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="images/dubaothoitiethomnaymua.png" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="images/image-2.png" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="images/daunhatlalangim.png" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="images/dubaothoitiethomnaymua.png" alt="">
-                        </div>
-                    </div>
-                    <div class="swiper-button-next" style="--swiper-navigation-top-offset: 40%;"></div>
-                    <div class="swiper-button-prev" style="--swiper-navigation-top-offset: 40%;"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="buttons">
-            <div class="box">
-                <img src="images/full-screen.svg" alt="">
-            </div>
-            <div class="box">
-                <img src="images/setting.svg" alt="">
-            </div>
-            <div class="box">
-                <img src="images/profile.svg" alt="">
-            </div>
-            <div class="box exit-btn" onclick="exit();">
-                <img src="images/x.svg" alt="">
-            </div>
-        </div>
-
-        <div class="part_1">
-            <div class="info">
-                <h1>Anh nhà ở đâu thế</h1>
-                <p>&nbsp;<span>- </span>Amee</p>
-            </div>
-            <i class="fa-solid fa-heart"></i>
-        </div>
-
-        <div class="part_2">
-            <div class="controller">
-                <div class="random-track">
-                    <img src="images/shuffle.svg" title="random">
-                </div>
-                <div class="prev-track">
-                    <img src="images/skip-prev.svg">
-                </div>
-                <div class="playpause-track">
-                    <img src="images/amee-dreamee-dia-cd_0cc3ba2c39ba4c1d9b5804d30a8b7e1d_master.webp" style="width:50px;">
-                    <i class="fa fa-play-circle fa-5x"></i>
-                </div>
-                <div class="next-track">
-                    <img src="images/skip-next.svg" alt="">
-                </div>
-                <div class="repeat-track">
-                    <img src="images/repeat.svg" title="repeat">
-                </div>
-            </div>
-            <div class="duration">
-                <div class="current-time">00:00</div>
-                <input type="range" min="1" max="100" value="0" class="seek_slider" id="range" oninput="progressScript()">
-                <div class="total-duration">00:00</div>
-            </div>
-        </div>
-
-        <div class="part_3">
-            <img src="images/microphone.png" alt="" onclick="open_control();">
-            <img src="images/icon-frame.svg" alt="" onclick="open_control();">
-            <div class="volume">
-                <img src="images/solid-media-volume-up.svg" alt="">
-                <input type="range" min="1" max="100" value="99" class="volume_slider" id="range" oninput="progressScript()">
-            </div>
-            <span></span>
-            <img src="images/menu.svg" alt="" class="menu" onclick="test();">
-        </div>
-    </section>
-
+    <?php require_once "play_track.php"; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
@@ -596,6 +365,10 @@ Rằng người ơi, tôi đang nhớ anh</pre>
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
             },
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
         });
 
         var swiper = new Swiper(".mySwiper_1", {
@@ -607,12 +380,8 @@ Rằng người ơi, tôi đang nhớ anh</pre>
         });
 
         var swiper = new Swiper(".mySwiper_2", {
-            slidesPerView: 3,
+            slidesPerView: 5,
             spaceBetween: 50,
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
         });
 
         const sliderEl = document.querySelector("#range")
@@ -623,19 +392,9 @@ Rằng người ơi, tôi đang nhớ anh</pre>
         }
 
         progressScript();
+        
     </script>
 
-    <script>
-        let dropdown1 = document.getElementById('dropdown-1');
-        dropdown1.onclick = function() {
-            dropdown1.classList.toggle('active');
-        }
-
-        let dropdown2 = document.getElementById('dropdown-2');
-        dropdown2.onclick = function() {
-            dropdown2.classList.toggle('active');
-        }
-    </script>
 </body>
 
 </html>

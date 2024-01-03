@@ -19,7 +19,7 @@ html {
     top: 0;
     left: 0;
     bottom: 0;
-    background: #376681;
+    background: rgba(55, 102, 129, 0.8);
     width: 60px;
     padding: 8px;
     flex-shrink: 0;

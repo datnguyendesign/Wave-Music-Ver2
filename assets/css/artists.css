@@ -17,8 +17,8 @@ html {
 
 body {
     background: #F7F8F8;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #ACBB78, #0c1111);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #ACBB78, #1f2c2c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, #4C8DB2, #0c1111);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4C8DB2, #1f2c2c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     width: 100%;
     height: 100%;
 }
@@ -97,17 +97,18 @@ main {
     text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
 }
 
-.swiper {
+.mySwiper_artist {
     width: 100%;
     height: 100%;
     padding: 8px 8px !important;
 }
 
-.swiper-slide {
+.mySwiper_artist .swiper-slide {
     text-align: center;
     font-size: 18px;
     background: transparent;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: rgba(217, 217, 217, .3);
@@ -115,13 +116,14 @@ main {
     padding: 3rem 1rem;
 }
 
-.swiper-slide img {
+.mySwiper_artist .swiper-slide img {
     width: 80%;
     height: 70%;
     object-fit: cover;
     border-radius: 5px;
     opacity: 0.8;
     transition: .3s;
+    box-shadow: none !important;
 }
 
 .swiper-slide .desc {
@@ -173,6 +175,7 @@ main {
 
 .songs {
     padding: 5px;
+    margin-bottom: 10rem;
 }
 
 .songs .title {
@@ -194,6 +197,48 @@ main {
     padding-left: 0;
 }
 
+.song-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 50px;
+}
+
+.song-header a {
+    font-size: 16px;
+    color: #d7d4d4;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.song-header a:hover {
+    text-decoration: underline;
+}
+
+.songs .song-item .tb .song-info {
+    padding-left: 12px;
+    text-transform: uppercase;
+}
+
+.songs .song-item .tb .song-info p:first-child {
+    padding-right: 8px;
+}
+
+.songs .song-item .tb h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.songs .song-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 0;
+}
+
 .songs .song-item li {
     padding: 1.2rem 0;
     border-bottom: 1px solid #fff;
@@ -203,10 +248,11 @@ main {
     justify-content: space-between;
     align-items: center;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.25);
+    cursor: pointer;
 }
 
-.songs .song-item li:nth-of-type(odd) {
-    background: rgba(217, 217, 217, .1);
+.songs .song-item .i:hover {
+    background: rgba(204, 204, 204, .3);
 }
 
 .songs .song-item li .song-info {
@@ -223,12 +269,13 @@ main {
     border-radius: 5px;
     object-fit: cover;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    margin-left: 12px;
 }
 
 .songs .song-item li .song-info p {
     font-size: 18px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     line-height: normal;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.25);
 }
@@ -236,8 +283,9 @@ main {
 .songs .song-item li h1 {
     font-size: 18px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     line-height: normal;
+    color: #ccc;
 }
 
 .songs .song-item li i {

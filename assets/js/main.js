@@ -3,8 +3,6 @@ let switcher_playlist = document.getElementById('playlist');
 let lyrics_box = document.querySelector('.lyrics');
 let playlist_box = document.querySelector('.playlist');
 
-console.log(playlist_box);
-
 function click_switcher_lyrics() {
     switcher_lyrics.classList.add('active');
     switcher_playlist.classList.remove('active');
