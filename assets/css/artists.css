@@ -26,6 +26,7 @@ body {
 main {
     margin-left: 100px;
     margin-right: 20px;
+    margin-bottom: 8rem;
 }
 
 .hero .title {
@@ -171,11 +172,6 @@ main {
 
 .row {
     --bs-gutter-x: 0;
-}
-
-.songs {
-    padding: 5px;
-    margin-bottom: 10rem;
 }
 
 .songs .title {

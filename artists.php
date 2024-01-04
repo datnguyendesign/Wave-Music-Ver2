@@ -169,9 +169,9 @@ $result_songs = $conn->query($sql);
                 <?php } ?>
             </ul>
         </section>
-
-        <?php require_once "footer.php"; ?>
     </main>
+
+    <?php require_once "footer.php"; ?>
 
     <?php require_once "play_track.php"; ?>
 
