@@ -58,8 +58,30 @@
     margin-bottom: 10px;
 }
 
+.controller .random-track,
+.controller .prev-track,
+.controller .playpause-track,
+.controller .next-track,
+.controller .repeat-track {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.controller .random-track:hover,
+.controller .prev-track:hover,
+.controller .playpause-track:hover,
+.controller .next-track:hover,
+.controller .repeat-track:hover {
+    opacity: 1;
+    scale: 1.05;
+}
+
 #music-control .part_2 .controller .playpause-track {
     position: relative;
+}
+
+#music-control .part_2 .controller .playpause-track i {
+    font-size: 50px;
 }
 
 #music-control .part_2 .controller .playpause-track:hover img {
@@ -112,7 +134,7 @@
 }
 
 .seek_slider {
-    width: 50rem;
+    width: 50rem !important;
 }
 
 .volume_slider {
@@ -324,4 +346,32 @@
     } to {
         transform: rotate(359deg);
     }
+}
+
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+      overflow: hidden;
+      width: 80px;
+      height: 5px;
+      -webkit-appearance: none;
+      background-color: transparent;
+      border-radius: 20px;
+    }
+    
+    input[type='range']::-webkit-slider-runnable-track {
+      height: 10px;
+      -webkit-appearance: none;
+      color: #ffffff;
+    }
+    
+    input[type='range']::-webkit-slider-thumb {
+      width: 10px;
+      -webkit-appearance: none;
+      height: 10px;
+      cursor: pointer;
+      background: #185cd2;
+      box-shadow: -50rem 0 0 50rem #c3c1c1;
+    }
+
 }

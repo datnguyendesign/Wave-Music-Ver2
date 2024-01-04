@@ -372,6 +372,12 @@ main {
     align-items: center;
     padding: 20px 10px;
     column-gap: 24px;
+    cursor: pointer;
+}
+
+.explore .item:hover {
+    background: rgba(217, 217, 217, 0.4);
+    border-radius: 10px;
 }
 
 .explore .item img {

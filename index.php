@@ -383,15 +383,6 @@ $data_song = $conn->query($sql_songs);
             slidesPerView: 5,
             spaceBetween: 50,
         });
-
-        const sliderEl = document.querySelector("#range")
-
-        function progressScript() {
-            const sliderValue = sliderEl.value;
-            sliderEl.style.background = `linear-gradient(to right, #fff ${sliderValue}%, rgba(217, 217, 217, 0.30) ${sliderValue}%)`;
-        }
-
-        progressScript();
         
     </script>
 

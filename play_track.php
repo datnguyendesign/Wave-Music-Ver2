@@ -3,6 +3,9 @@ require_once "connection.php";
 
 $sql_songs = "SELECT * FROM songs";
 $data_songs = $conn->query($sql_songs);
+
+$sql_song_list = "SELECT * FROM songs";
+$data_song_list = $conn->query($sql_song_list);
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +17,10 @@ $data_songs = $conn->query($sql_songs);
     <link rel="stylesheet" href="assets/css/track-play.css">
     <script src="https://kit.fontawesome.com/4f40e8708a.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Link swiper.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
 </head>
 
 <body>
@@ -26,7 +33,7 @@ $data_songs = $conn->query($sql_songs);
 
         <div class="swap-slider">
             <div class="lyrics active">
-                <img src="images/image-2.png" alt="">
+                <img src="images/image-2.png" alt="" class="track-image">
                 <div class="lyric-area">
                     <pre>Anh và tôi thật ra gặp nhau và quen nhau cũng đã được mấy năm
 Mà chẳng có chi hơn lời hỏi thăm
@@ -49,24 +56,11 @@ Rằng người ơi, tôi đang nhớ anh</pre>
                 <!-- Swiper -->
                 <div class="swiper mySwiper_2">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="images/image-2.png" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="images/daunhatlalangim.png" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="images/dubaothoitiethomnaymua.png" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="images/image-2.png" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="images/daunhatlalangim.png" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="images/dubaothoitiethomnaymua.png" alt="">
-                        </div>
+                        <?php while ($row = mysqli_fetch_assoc($data_song_list)) { ?>
+                            <div class="swiper-slide songs" data-id="<?php echo $row["songID"]; ?>" onclick="playMe()">
+                                <img src="<?php echo $row["songImage"]; ?>" alt="">
+                            </div>
+                        <?php } ?>
                     </div>
                     <div class="swiper-button-next" style="--swiper-navigation-top-offset: 40%;"></div>
                     <div class="swiper-button-prev" style="--swiper-navigation-top-offset: 40%;"></div>
@@ -106,8 +100,8 @@ Rằng người ơi, tôi đang nhớ anh</pre>
                     <img src="images/skip-prev.svg">
                 </div>
                 <div class="playpause-track" onclick="playpauseTrack()">
-                    <img src="images/Aesthetic wall poster ✨.jpg" style="width:50px;" class="track-art">
-                    <i class="fa fa-play-circle fa-5x"></i>
+                    <img src="images/Aesthetic wall poster ✨.jpg" style="width:50px; height: 50px;" class="track-art">
+                    <i class="fa fa-play-circle"></i>
                 </div>
                 <div class="next-track" onclick="nextTrack()">
                     <img src="images/skip-next.svg" alt="">
@@ -118,7 +112,7 @@ Rằng người ơi, tôi đang nhớ anh</pre>
             </div>
             <div class="duration">
                 <div class="current-time">00:00</div>
-                <input type="range" min="1" max="100" value="0" class="seek_slider" id="range" oninput="progressScript()" onchange="seekTo()">
+                <input type="range" min="1" max="100" value="0" class="seek_slider" id="range" onchange="seekTo()">
                 <div class="total-duration">00:00</div>
             </div>
         </div>
@@ -128,7 +122,7 @@ Rằng người ơi, tôi đang nhớ anh</pre>
             <img src="images/icon-frame.svg" alt="" onclick="open_control();">
             <div class="volume">
                 <img src="images/solid-media-volume-up.svg" alt="">
-                <input type="range" min="1" max="100" value="99" class="volume_slider" id="range" oninput="progressScript()" onchange="setVolume()">
+                <input type="range" min="1" max="100" value="99" class="volume_slider" id="range" onchange="setVolume()">
             </div>
             <span></span>
             <img src="images/menu.svg" alt="" class="menu" onclick="test();">
@@ -138,11 +132,15 @@ Rằng người ơi, tôi đang nhớ anh</pre>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="assets/js/main.js"></script>
+    <!-- Link swiper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
 
     <script>
         let track_art = document.querySelector('.track-art');
         let track_name = document.querySelector('.track-name');
         let track_artist = document.querySelector('.track-artist');
+        let track_music = document.querySelector('.track-image');
 
         let playpause_btn = document.querySelector('.playpause-track');
         let next_btn = document.querySelector('.next-track');
@@ -155,7 +153,9 @@ Rằng người ơi, tôi đang nhớ anh</pre>
         let randomIcon = document.querySelector('.random');
         let curr_track = document.createElement('audio');
 
-        let track_index = 0;
+        let lyrics_area = document.querySelector('.lyric-area');
+
+        let track_index;
         let isPlaying = false;
         let isRandom = false;
         let updateTimer;
@@ -204,10 +204,16 @@ Rằng người ơi, tôi đang nhớ anh</pre>
                 track_name.textContent = music_list[track_index].songName;
             }
             if (track_artist) {
-                track_artist.textContent = music_list[track_index].songArtist;
+                track_artist.textContent = ' -' + music_list[track_index].songArtist;
             }
             if (track_art) {
                 track_art.src = music_list[track_index].songImg;
+            }
+            if (track_music) {
+                track_music.src = music_list[track_index].songImg;
+            }
+            if (lyrics_area) {
+                lyrics_area.innerHTML = "<pre>" + music_list[track_index].lyrics + "</pre>";
             }
 
             updateTimer = setInterval(setUpdate, 1000);
@@ -276,14 +282,14 @@ Rằng người ơi, tôi đang nhớ anh</pre>
             curr_track.play();
             isPlaying = true;
             track_art.classList.add('rotate');
-            playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
+            playpause_btn.innerHTML = '<i class="fa fa-pause-circle"></i>';
         }
 
         function pauseTrack() {
             curr_track.pause();
             isPlaying = false;
             track_art.classList.remove('rotate');
-            playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
+            playpause_btn.innerHTML = '<i class="fa fa-play-circle"></i>';
         }
 
         function nextTrack() {
@@ -312,11 +318,17 @@ Rằng người ơi, tôi đang nhớ anh</pre>
         function seekTo() {
             let seekto = curr_track.duration * (seek_slider.value / 100);
             curr_track.currentTime = seekto;
+
         }
 
         function setVolume() {
             curr_track.volume = volume_slider.value / 100;
         }
+
+        var swiper = new Swiper(".mySwiper_2", {
+            slidesPerView: 5,
+            spaceBetween: 50,
+        });
     </script>
 </body>
 

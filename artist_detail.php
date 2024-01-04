@@ -35,7 +35,7 @@ $row_artist = $result_artist->fetch_assoc();
     <main>
         <section class="artist">
             <div class="action">
-                <a href="#"><i class="fa-solid fa-circle-play"></i></a>
+                <a href="#" class="playpause-track" onclick="playpauseTrack()"><i class="fa-solid fa-circle-play"></i></a>
                 <a href="#"><i class="fa-solid fa-shuffle"></i></a>
                 <button class="follow">Follow</button>
             </div>
