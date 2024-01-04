@@ -12,6 +12,13 @@ if (count($_COOKIE) > 0) {
   $row = -1;
 }
 
+if (isset($_POST["submit"])) {
+  $search = $_POST["search"];
+
+  $sql_search = "SELECT * FROM song_artist_info WHERE songName LIKE '%$search%' OR lyrics LIKE '%$search%' OR release_year LIKE '%$search%' OR artistName LIKE '%$search%'";
+  $result_search = $conn->query($sql_search);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -30,12 +37,13 @@ if (count($_COOKIE) > 0) {
 <body>
 
   <header id="header">
-    <label for="search" class="search-bar">
-      <input type="text" name="search" id="search_bar" placeholder="Search for music, podcast, playlist,...">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </label>
+    <form action="search.php" method="post">
+      <label for="search" class="search-bar">
+        <input type="text" name="search" id="search_bar" placeholder="Search for music, podcast, playlist,...">
+        <button type="submit" name="submit"><i class="fa fa-search"></i></button>
+      </label>
 
-    <?php
+      <?php
     if ($row > 0) {
       echo  '<div class="user">
                     <div class="dropdown" id="dropdown-1">
@@ -57,8 +65,8 @@ if (count($_COOKIE) > 0) {
                     <button type="button"><a href="registration.php">Sign up</a></button>
                   </div>';
     }
-    ?>
-
+      ?>
+    </form>
   </header>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

@@ -60,6 +60,17 @@ CREATE TABLE podcasts (
     last_updated timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+CREATE TABLE song_artist_info AS
+SELECT 
+    s.songName,
+    a.artistName,
+    s.lyrics,
+    s.release_year
+FROM 
+    songs s
+JOIN 
+    artists a ON s.artistID = a.artistID;
+
 -- Inserting users with various information
 INSERT INTO users (username, password, email, birthday) VALUES
 ('john_doe', 'password123', 'john.doe@example.com', '1990-05-15'),
